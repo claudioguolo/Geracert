@@ -1,0 +1,41 @@
+
+services:
+  php:
+    image: php:8.1-cli-alpine
+    container_name: geracert-php
+    working_dir: /var/www/html/contestbr
+    ports:
+      - "8085:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - PHP_IDE_CONFIG=serverName=geracert
+    networks:
+      - geracert-network
+    depends_on:
+      - db
+    command: php -S 0.0.0.0:80 -t /var/www/html/contestbr /var/www/html/contestbr/index.php
+
+  db:
+    image: mysql:8.0
+    container_name: geracert-mysql
+    environment:
+      MYSQL_DATABASE: geracert_dev
+      MYSQL_USER: geracert_dev
+      MYSQL_PASSWORD: geracert_dev_pass
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'America/Cuiaba'
+    ports:
+      - "3306:3306"
+    volumes:
+      - geracert-mysql:/var/lib/mysql
+    networks:
+      - geracert-network
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  geracert-mysql:
+
+networks:
+  geracert-network:
+    driver: bridge

@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+
+geracert/vendor/
+geracert/writable/
+geracert.zip
+
+*.log
