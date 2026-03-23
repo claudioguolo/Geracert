@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'u132925616_geracert',
-        'password' => 'nv6JYDGh9zTAAwD',
-        'database' => 'u132925616_geracert',
+        'hostname' => 'db',
+        'username' => 'geracert_dev',
+        'password' => 'geracert_dev_pass',
+        'database' => 'geracert_dev',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

@@ -146,7 +146,7 @@ class Main extends BaseController
                 'texto_text' => $consulta[0]->texto_text,
                 'serial_text' => $consulta[0]->serial_text,
                 'datetime_text' => $consulta[0]->datetime_text,
-                'imagem' => base_url().'/images/contest/'.$consulta[0]->imagem,
+                'imagem' => FCPATH . 'images/contest/' . ltrim($consulta[0]->imagem, '/'),
                 '$div_texto' => strtr($consulta[0]->html, $cert_vars),
                 'size_h1'=> $consulta[0]->size_h1,
                 'size_h2'=> $consulta[0]->size_h2,

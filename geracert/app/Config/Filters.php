@@ -40,7 +40,15 @@ class Filters extends BaseConfig
                     'main/pregeracert/*',
                     'main/',
                     'main/*',
-                    '/'
+                    '/',
+                    'images/*',
+                    '/images/*',
+                    'style/*',
+                    '/style/*',
+                    'favicon.ico',
+                    '/favicon.ico',
+                    'robots.txt',
+                    '/robots.txt'
 
                 ]
 

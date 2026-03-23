@@ -1,9 +1,13 @@
+*.sql
 .env
 .env.*
 !.env.example
 
 geracert/vendor/
 geracert/writable/
+py9mt/images/
+Old.zip
+
 geracert.zip
 
 *.log

@@ -58,7 +58,7 @@
     <div class="corpo">
 
         <div class="serial"><h6>#<?= $cert_vars['serial'] ?></h6></div>
-        <img src="<?= $format_vars['imagem'] ?>" style="width: 100%; margin-top: -1%;">
+        <img src="<?= esc($format_vars['imagem']) ?>" style="width: 100%; margin-top: -1%;">
         <div class="texto"><?= $format_vars['$div_texto'] ?></div>
         <div class="datetime"><h6>Gerado em: <?= $cert_vars['geracao_data'] ?> </h6></div>
 

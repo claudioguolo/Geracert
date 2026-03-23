@@ -79,7 +79,8 @@ function findIco($status, $serial, $id)
 function domPdf($html, $call, $contest, $year)
 {
    $options = new Options();
-   $options->setChroot(__DIR__);
+   $chroot = defined('FCPATH') ? rtrim(FCPATH, DIRECTORY_SEPARATOR) : __DIR__;
+   $options->setChroot($chroot);
    //$options->setIsRemoteEnabled(true);
    $options->set('isRemoteEnabled', TRUE);
    $dompdf = new Dompdf($options);

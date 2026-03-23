@@ -1,20 +1,23 @@
 
 services:
   php:
-    image: php:8.1-cli-alpine
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: geracert-php:8.1
     container_name: geracert-php
-    working_dir: /var/www/html/contestbr
+    working_dir: /var/www/html/py9mt
     ports:
       - "8085:80"
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html:Z
     environment:
       - PHP_IDE_CONFIG=serverName=geracert
     networks:
       - geracert-network
     depends_on:
       - db
-    command: php -S 0.0.0.0:80 -t /var/www/html/contestbr /var/www/html/contestbr/index.php
+    command: php -S 0.0.0.0:80 -t /var/www/html/py9mt /var/www/html/py9mt/index.php
 
   db:
     image: mysql:8.0
