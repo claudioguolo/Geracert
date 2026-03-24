@@ -16,8 +16,8 @@ Contributions are welcome. If you use GERACERT in your club, event or personal p
 
 This repository is organized in two main directories on purpose:
 
-- [`py9mt/`](/home/claudio/docker/geracert/py9mt): public web root
-- [`geracert/`](/home/claudio/docker/geracert/geracert): CodeIgniter 4 application
+- [`py9mt/`](py9mt/): public web root
+- [`geracert/`](geracert/): CodeIgniter 4 application
 
 This split exists to support shared hosting environments such as Hostinger, where the full application should not live inside `public_html`.
 
@@ -25,10 +25,10 @@ This split exists to support shared hosting environments such as Hostinger, wher
 
 Project documentation:
 
-- [Full application README](/home/claudio/docker/geracert/geracert/README.md)
-- [Certificate template guide](/home/claudio/docker/geracert/geracert/docs/CERTIFICATE_TEMPLATES.md)
-- [License](/home/claudio/docker/geracert/LICENSE)
-- [Changelog](/home/claudio/docker/geracert/CHANGELOG.md)
+- [Full application README](geracert/README.md)
+- [Certificate template guide](geracert/docs/CERTIFICATE_TEMPLATES.md)
+- [License](LICENSE)
+- [Changelog](CHANGELOG.md)
 
 Common commands:
 
@@ -51,10 +51,10 @@ cp .env.example .env
 └── scripts/             # Convenience commands for contributors
 ```
 
-For installation, usage, deployment and customization details, see the full [application README](/home/claudio/docker/geracert/geracert/README.md).
+For installation, usage, deployment and customization details, see the full [application README](geracert/README.md).
 
 ## Community Files
 
-- [Contributing Guide](/home/claudio/docker/geracert/CONTRIBUTING.md)
-- [Security Policy](/home/claudio/docker/geracert/SECURITY.md)
-- [Changelog](/home/claudio/docker/geracert/CHANGELOG.md)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [Changelog](CHANGELOG.md)

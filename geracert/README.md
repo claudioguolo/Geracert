@@ -152,7 +152,7 @@ If you deploy this project to Hostinger or another shared hosting provider:
 
 - place `py9mt/` inside `public_html` or configure `public_html` to point to it
 - keep `geracert/` outside the public directory whenever possible
-- update the paths used by [index.php](/home/claudio/docker/geracert/py9mt/index.php) and [Paths.php](/home/claudio/docker/geracert/geracert/app/Config/Paths.php) if your hosting structure is different
+- update the paths used by [`py9mt/index.php`](../py9mt/index.php) and [`app/Config/Paths.php`](app/Config/Paths.php) if your hosting structure is different
 - configure `app.baseURL` for your final domain
 
 This split is not accidental. It is part of the deployment strategy.
@@ -204,7 +204,7 @@ GERACERT generates certificates by combining:
 
 If you want to create a new contest certificate layout, read:
 
-- [Certificate Template Guide](/home/claudio/docker/geracert/geracert/docs/CERTIFICATE_TEMPLATES.md)
+- [Certificate Template Guide](docs/CERTIFICATE_TEMPLATES.md)
 
 That guide explains:
 
@@ -252,7 +252,7 @@ This project is distributed under a BSD-style attribution license. In practical 
 - you must keep the original copyright and license notice
 - you must preserve attribution to the original creator and GERACERT project
 
-The full license text is available in [LICENSE](/home/claudio/docker/geracert/LICENSE).
+The full license text is available in [LICENSE](../LICENSE).
 
 Required attribution:
 
@@ -268,6 +268,6 @@ Created by Claudio `PY9MT`.
 
 ## Contributing and Security
 
-- [Contributing Guide](/home/claudio/docker/geracert/CONTRIBUTING.md)
-- [Security Policy](/home/claudio/docker/geracert/SECURITY.md)
-- [Changelog](/home/claudio/docker/geracert/CHANGELOG.md)
+- [Contributing Guide](../CONTRIBUTING.md)
+- [Security Policy](../SECURITY.md)
+- [Changelog](../CHANGELOG.md)

@@ -15,8 +15,8 @@ When a user opens a public certificate URL, GERACERT:
 
 The rendering flow is implemented in:
 
-- [CertificateIssuanceService.php](/home/claudio/docker/geracert/geracert/app/Services/CertificateIssuanceService.php)
-- [cert_model.php](/home/claudio/docker/geracert/geracert/app/Views/cert_model.php)
+- [`app/Services/CertificateIssuanceService.php`](../app/Services/CertificateIssuanceService.php)
+- [`app/Views/cert_model.php`](../app/Views/cert_model.php)
 
 ## Where Templates Are Stored
 
@@ -40,7 +40,7 @@ The main editable fields are:
 
 Background image files must be stored in:
 
-- [py9mt/images/contest](/home/claudio/docker/geracert/py9mt/images/contest)
+- [`py9mt/images/contest`](../../py9mt/images/contest/)
 
 The `imagem` field should contain only the file name, for example:
 
@@ -78,7 +78,7 @@ Available placeholders:
 
 These values are prepared in:
 
-- [CertificateIssuanceService.php](/home/claudio/docker/geracert/geracert/app/Services/CertificateIssuanceService.php)
+- [`app/Services/CertificateIssuanceService.php`](../app/Services/CertificateIssuanceService.php)
 
 ## Example Template HTML
 
@@ -153,7 +153,7 @@ Blocked examples:
 Recommended workflow:
 
 1. Prepare the background certificate image in PNG format.
-2. Copy the image to [py9mt/images/contest](/home/claudio/docker/geracert/py9mt/images/contest).
+2. Copy the image to [`py9mt/images/contest`](../../py9mt/images/contest/).
 3. Open the admin area and go to `Contests`.
 4. Create a new contest template.
 5. Fill in:
@@ -182,7 +182,7 @@ If the template exists but the values differ, the PDF will not be found.
 
 The project ships with example templates in:
 
-- [CertformatSeeder.php](/home/claudio/docker/geracert/geracert/app/Database/Seeds/CertformatSeeder.php)
+- [`app/Database/Seeds/CertformatSeeder.php`](../app/Database/Seeds/CertformatSeeder.php)
 
 These examples are useful as a starting point when creating a new contest layout.
 
@@ -258,7 +258,7 @@ PP5ABC,CQWS,2024,Ana Souza,13200,ARAUCARIA DX GROUP,C,GERACERT,SSB,MULTI-OP,2,d,
 
 Ready-to-copy sample file:
 
-- [certificates-import-example.csv](/home/claudio/docker/geracert/geracert/docs/examples/certificates-import-example.csv)
+- [`docs/examples/certificates-import-example.csv`](examples/certificates-import-example.csv)
 
 ### Accepted Header Variants
 
