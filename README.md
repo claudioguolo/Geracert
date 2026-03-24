@@ -1,5 +1,19 @@
 # GERACERT Repository
 
+GERACERT is an open-source system for managing and publishing ham radio contest certificates.
+
+The project allows radio clubs, contest organizers and individual radio amateurs to:
+
+- register certificate records in a database
+- manage certificate templates visually
+- import participant data in batch using CSV
+- publish a public search page by callsign or club
+- generate PDF certificates on demand
+
+The goal of this project is to offer a reusable starting point so that other ham radio communities do not need to build a certificate management platform from scratch.
+
+Contributions are welcome. If you use GERACERT in your club, event or personal project, consider opening issues, submitting improvements and sharing adaptations that may also help other radio amateurs.
+
 This repository is organized in two main directories on purpose:
 
 - [`py9mt/`](/home/claudio/docker/geracert/py9mt): public web root
