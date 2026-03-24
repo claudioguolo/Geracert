@@ -2,6 +2,8 @@
 .env
 .env.*
 !.env.example
+old_index.php
+py9mt/old_index.php
 
 geracert/vendor/
 geracert/writable/
