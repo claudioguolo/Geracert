@@ -92,4 +92,15 @@ class Security extends BaseConfig
      * @deprecated
      */
     public $samesite = 'Lax';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $environment = defined('ENVIRONMENT') ? ENVIRONMENT : (getenv('CI_ENVIRONMENT') ?: 'production');
+
+        if ($environment === 'production') {
+            $this->samesite = 'Strict';
+        }
+    }
 }

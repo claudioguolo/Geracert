@@ -31,30 +31,12 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'auth' => [
+            'csrf' => [
                 'except' => [
-                    'login/*',
-                    'login/',
-                    '/tablecerts',
-                    '/pregeracert/*',
-                    'main/pregeracert/*',
-                    'main/',
-                    'main/*',
-                    '/',
-                    'images/*',
-                    '/images/*',
-                    'style/*',
-                    '/style/*',
-                    'favicon.ico',
-                    '/favicon.ico',
-                    'robots.txt',
-                    '/robots.txt'
-
-                ]
-
-            ]
+                    'certconfig/preview',
+                ],
+            ],
             // 'honeypot',
-            // 'csrf',
         ],
         'after' => [
             'toolbar',
@@ -83,4 +65,26 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [];
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $environment = defined('ENVIRONMENT') ? ENVIRONMENT : (getenv('CI_ENVIRONMENT') ?: 'production');
+
+        if ($environment === 'testing') {
+            foreach ($this->globals['before'] as $key => $filter) {
+                if ($key === 'csrf' || $filter === 'csrf') {
+                    unset($this->globals['before'][$key]);
+                }
+            }
+        }
+
+        if ($environment !== 'development') {
+            $this->globals['after'] = array_values(array_filter(
+                $this->globals['after'],
+                static fn (string $filter): bool => $filter !== 'toolbar'
+            ));
+        }
+    }
 }

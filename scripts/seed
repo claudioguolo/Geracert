@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+docker compose exec -T php sh -lc "cd /var/www/html/geracert && php spark db:seed DatabaseSeeder"

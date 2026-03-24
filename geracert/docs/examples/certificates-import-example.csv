@@ -1,0 +1,4 @@
+callsign,contest,year,name,score,club,event_type,organizer,mode,category,overall_class,status,operator,km,continent_class,country_class,club_code,station_club
+PY9MT,CQWS,2024,Claudio,15420,LABRE,C,GERACERT,CW,SINGLE-OP,1,d,Claudio PY9MT,0,1,1,001,LABRE
+PP5ABC,CQWS,2024,Ana Souza,13200,ARAUCARIA DX GROUP,C,GERACERT,SSB,MULTI-OP,2,d,Ana Souza PP5ABC,0,2,3,015,ARAUCARIA DX GROUP
+LU1XYZ,CQWS,2024,Carlos Perez,11800,RADIO CLUB ARGENTINO,C,GERACERT,CW,SINGLE-OP,5,d,Carlos Perez LU1XYZ,0,4,7,101,RADIO CLUB ARGENTINO

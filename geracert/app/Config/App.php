@@ -69,7 +69,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $defaultLocale = 'pt-br';
+    public $defaultLocale = 'pt-BR';
 
     /**
      * --------------------------------------------------------------------------
@@ -96,7 +96,7 @@ class App extends BaseConfig
      *
      * @var string[]
      */
-    public $supportedLocales = ['pt-br'];
+    public $supportedLocales = ['pt-BR', 'en'];
 
     /**
      * --------------------------------------------------------------------------
@@ -239,7 +239,7 @@ class App extends BaseConfig
      *
      * @var bool
      */
-    public $sessionRegenerateDestroy = false;
+    public $sessionRegenerateDestroy = true;
 
     /**
      * --------------------------------------------------------------------------
@@ -331,6 +331,18 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$samesite property instead.
      */
     public $cookieSameSite = 'Lax';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $environment = defined('ENVIRONMENT') ? ENVIRONMENT : (getenv('CI_ENVIRONMENT') ?: 'production');
+
+        if ($environment === 'production') {
+            $this->forceGlobalSecureRequests = true;
+            $this->cookieSecure              = true;
+        }
+    }
 
     /**
      * --------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		bootstrap="system/Test/bootstrap.php"
+		bootstrap="ci4/system/Test/bootstrap.php"
 		backupGlobals="false"
 		colors="true"
 		convertErrorsToExceptions="true"
@@ -43,15 +43,14 @@
 		<!-- Directory containing the Paths config file -->
 		<const name="CONFIGPATH" value="./app/Config/"/>
 		<!-- Directory containing the front controller (index.php) -->
-		<const name="PUBLICPATH" value="./public/"/>
+		<const name="PUBLICPATH" value="../py9mt/"/>
 		<!-- Database configuration -->
-		<!-- Uncomment to provide your own database for testing
-		<env name="database.tests.hostname" value="localhost"/>
-		<env name="database.tests.database" value="tests"/>
-		<env name="database.tests.username" value="tests_user"/>
-		<env name="database.tests.password" value=""/>
+		<env name="app.baseURL" value="http://geracert.local:8085/"/>
+		<env name="database.tests.hostname" value="db"/>
+		<env name="database.tests.database" value="geracert_test"/>
+		<env name="database.tests.username" value="geracert_dev"/>
+		<env name="database.tests.password" value="geracert_dev_pass"/>
 		<env name="database.tests.DBDriver" value="MySQLi"/>
-		<env name="database.tests.DBPrefix" value="tests_"/>
-		-->
+		<env name="database.tests.DBPrefix" value=""/>
 	</php>
 </phpunit>

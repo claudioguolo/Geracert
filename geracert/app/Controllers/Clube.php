@@ -3,8 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ClubeModel;
-use App\Models\Clubes;
-use SebastianBergmann\Timer\Duration;
 
 class Clube extends BaseController
 {
@@ -12,6 +10,15 @@ class Clube extends BaseController
     ########################################################################
 
     private $clubeModel;
+
+    private const FORM_FIELDS = [
+        'id',
+        'codigo',
+        'indicativo',
+        'clube',
+        'categoria',
+        'status',
+    ];
 
     public function __construct()
     {
@@ -24,9 +31,8 @@ class Clube extends BaseController
     public function index()
     {
 
-        //$clubes = $this->clubeModel->findAll();
         return view('clubes', [
-            'clubes' => $this->clubeModel->paginate(15),
+            'clubes' => $this->clubeModel->orderBy('id', 'DESC')->paginate(15),
             'pager' => $this->clubeModel->pager
 
         ]);
@@ -38,13 +44,12 @@ class Clube extends BaseController
     {
 
         if ($this->clubeModel->delete($id)) {
-
-            echo view('messages', [
-                'message' => 'Clube Excluido com sucesso'
-            ]);
-        } else {
-            echo "Erro";
+            return redirect()->to(base_url('clube'))
+                ->with('success', lang('UI.clubDeleted'));
         }
+
+        return redirect()->to(base_url('clube'))
+            ->with('error', lang('UI.operationError'));
     }
 
     ########################################################################
@@ -58,15 +63,17 @@ class Clube extends BaseController
 
     public function store()
     {
-        if ($this->clubeModel->save($this->request->getPost())) {
+        $payload = $this->request->getPost(self::FORM_FIELDS);
 
-            return view("messages", [
-                'message' => 'Novo Clube salvo com sucesso!',
-                'redirect' =>  'clube'
-            ]);
-        } else {
-            echo "Ocorreu um erro ao salvar.";
+        if ($this->clubeModel->save($payload)) {
+            return redirect()->to(base_url('clube'))
+                ->with('success', lang('UI.clubSaved'));
         }
+
+        return view('clubeform', [
+            'clube'  => (object) $payload,
+            'errors' => $this->clubeModel->errors(),
+        ]);
     }
 
     ########################################################################

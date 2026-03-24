@@ -45,6 +45,17 @@ class Autoload extends AutoloadConfig
         'Config'      => APPPATH . 'Config',
     ];
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $environment = defined('ENVIRONMENT') ? ENVIRONMENT : (getenv('CI_ENVIRONMENT') ?: 'production');
+
+        if ($environment === 'testing' && defined('TESTPATH')) {
+            $this->psr4['Tests'] = TESTPATH;
+        }
+    }
+
     /**
      * -------------------------------------------------------------------
      * Class Map

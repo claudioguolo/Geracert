@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php $previewMode = isset($preview_mode) && $preview_mode === true; ?>
 
 <head>
     <title>Geracert</title>
@@ -8,6 +9,18 @@
         html, body {height: 95%;}
 
         body {background-size: cover; background-repeat: no-repeat; padding: 0;}
+        <?php if ($previewMode) : ?>
+        html, body {
+            width: 1123px;
+            height: 794px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #fff;
+        }
+        <?php endif; ?>
 
         h1 {<?= $format_vars['size_h1'] ?>}
         h2 {<?= $format_vars['size_h2'] ?>}
@@ -54,13 +67,12 @@
 
 
 <body>
-
     <div class="corpo">
 
         <div class="serial"><h6>#<?= $cert_vars['serial'] ?></h6></div>
         <img src="<?= esc($format_vars['imagem']) ?>" style="width: 100%; margin-top: -1%;">
         <div class="texto"><?= $format_vars['$div_texto'] ?></div>
-        <div class="datetime"><h6>Gerado em: <?= $cert_vars['geracao_data'] ?> </h6></div>
+        <div class="datetime"><h6><?= esc(lang('UI.generatedOn')) ?>: <?= $cert_vars['geracao_data'] ?> </h6></div>
 
     </div>
 

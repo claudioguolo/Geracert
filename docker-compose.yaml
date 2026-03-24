@@ -8,7 +8,7 @@ services:
     container_name: geracert-php
     working_dir: /var/www/html/py9mt
     ports:
-      - "8085:80"
+      - "${APP_PORT:-8085}:80"
     volumes:
       - ./:/var/www/html:Z
     environment:
@@ -23,13 +23,13 @@ services:
     image: mysql:8.0
     container_name: geracert-mysql
     environment:
-      MYSQL_DATABASE: geracert_dev
-      MYSQL_USER: geracert_dev
-      MYSQL_PASSWORD: geracert_dev_pass
-      MYSQL_ROOT_PASSWORD: root
-      TZ: 'America/Cuiaba'
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-geracert_dev}
+      MYSQL_USER: ${MYSQL_USER:-geracert_dev}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_me_dev_password}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_me_root_password}
+      TZ: ${TZ:-America/Cuiaba}
     ports:
-      - "3306:3306"
+      - "${DB_PORT:-3306}:3306"
     volumes:
       - geracert-mysql:/var/lib/mysql
     networks:

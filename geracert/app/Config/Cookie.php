@@ -116,4 +116,15 @@ class Cookie extends BaseConfig
      * @see https://tools.ietf.org/html/rfc2616#section-2.2
      */
     public $raw = false;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $environment = defined('ENVIRONMENT') ? ENVIRONMENT : (getenv('CI_ENVIRONMENT') ?: 'production');
+
+        if ($environment === 'production') {
+            $this->secure = true;
+        }
+    }
 }

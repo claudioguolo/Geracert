@@ -7,14 +7,14 @@
   <!-- <caption>Certificados Disponíveis</caption> -->
 
   <thead>
-    <th style="width: 10%"><b>INDICATIVO</b></th>
-    <th style="width: 10%"><b>CONCURSO</b></th>
-    <th style="width: 10%" style="width: 5%"><b>ANO</b></th>
-    <th style="width: 10%"><b>SCORE</b></th>
-    <th style="width: 10%"><b>TIPO</b></th>
-    <th style="width: 23%"><b>CLUBE</b></th>
-    <th style="width: 25%"><b>NOME</b></th>
-    <th style="width: 5%"><b>CERT</b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.callsign')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicContest')) ?></b></th>
+    <th style="width: 10%" style="width: 5%"><b><?= esc(lang('UI.publicYear')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicScore')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicType')) ?></b></th>
+    <th style="width: 23%"><b><?= esc(lang('UI.publicClub')) ?></b></th>
+    <th style="width: 25%"><b><?= esc(lang('UI.publicName')) ?></b></th>
+    <th style="width: 5%"><b><?= esc(lang('UI.publicCertificate')) ?></b></th>
   </thead>
 
   <tbody class=".table-hover">
@@ -25,17 +25,17 @@
 
     <?php foreach($consulta as $certificado): ?>
 
-    <?= '<tr>' ?>
-    <?= '<td><b>'.$certificado->indicativo.'</b></td>'; ?>
-    <?= '<td><b>'.$certificado->concurso.'</b></td>'; ?>
-    <?= '<td>'.$certificado->ano.'</td>'; ?>
-    <?= '<td>'.$certificado->pontuacao.'</td>'; ?>
-    <?= '<td>'.strtoupper($certificado->tipo_evento).'</td>'; ?>
-    <?= '<td>'.$certificado->clube.'</td>'; ?>
-    <?= '<td><b>'.strtoupper($certificado->nome).'</b></td>'; ?>
+    <tr>
+    <td><b><?= esc($certificado->indicativo) ?></b></td>
+    <td><b><?= esc($certificado->concurso) ?></b></td>
+    <td><?= esc($certificado->ano) ?></td>
+    <td><?= esc($certificado->pontuacao) ?></td>
+    <td><?= esc(strtoupper((string) $certificado->tipo_evento)) ?></td>
+    <td><?= esc($certificado->clube) ?></td>
+    <td><b><?= esc(strtoupper((string) $certificado->nome)) ?></b></td>
     <?= helper("App_helper"); ?>
     <?= findIco($certificado->status, $certificado->serial, $certificado->identificador); ?>
-    <?= '</tr>' ?>
+    </tr>
 
     <?php endforeach; ?>
 

@@ -14,7 +14,7 @@
     <tr>
         <td style="width: 90%;">
             <b>
-                Digite um indicativo de chamada válido ou selecione um clube - Enter a valid call sign or select a club 
+                <?= esc(lang('UI.introSearch')) ?>
             </b>
         </td>
     </tr>

@@ -89,6 +89,7 @@ function domPdf($html, $call, $contest, $year)
    $dompdf->render();
    header('Content-type: application/pdf');
    $dompdf->stream($call . "-" . $contest . "-" . $year . ".pdf");
+   exit;
 }
 
 
@@ -108,29 +109,6 @@ function get_QRZ($call, $LOGIN_QRZ, $PASS_QRZ)
 
    return $qrz_name;
 };
-
-//Função que gera e insere no banco de dados o serial e geracao_data caso não houver
-//Este função é executada no momento que o certificado é gerado a primeira vez
-
-function serialData($Id)
-{
-
-   $modelo = new CertificadosModel();
-
-   $sql = 'select * from certificados where identificador = "' . $Id . '"';
-   $certificados = $modelo->db->query($sql)->getResultObject();
-
-   if (!$certificados[0]->geracao_data) {
-
-      date_default_timezone_set('UCT');
-      $date = date('d-m-Y H:i');
-      $serial = $certificados[0]->organizador . str_pad($Id, 5, "0", STR_PAD_LEFT) . date('y');
-      $sqlinsert = 'UPDATE certificados SET serial= "' . $serial . '", geracao_data = "' . $date . '", nome = "' . $certificados[0]->nome . '" where identificador = "' . $Id . '"';
-      $modelo->query($sqlinsert);
-   }
-}
-
-
 
 #generate and update identificator field where is null
 

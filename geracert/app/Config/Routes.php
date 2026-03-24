@@ -21,7 +21,7 @@ $routes->setDefaultController('Main');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -32,23 +32,59 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::index');
+$routes->get('/locale/(:segment)', 'Main::setLocale/$1');
 $routes->get('/pregeracert', 'Main::pregeracert');
 $routes->get('/tablecerts', 'Main::tablecerts');
+$routes->get('/login', 'Login::index');
+$routes->post('/login/signIn', 'Login::signIn');
+$routes->post('/login/signOut', 'Login::signOut');
 //$routes->get('/geracert', 'Extra::geracert');
 //$routes->get('/certeditor', 'Admin::certeditor');
 //$routes->get('/geracert/(:any)', 'Extra::geracert/$1');
 $routes->get('/pregeracert/(:any)', 'Main::pregeracert/$1');
 //$routes->get('/login', 'Login::login');
 
-$routes->get('/lista_concursos', 'Admin::lista_concursos');
-$routes->get('/edita_concurso/(:any)', 'Admin::edita_concurso/$1');
-$routes->post('/update_concurso', 'Admin::update_concurso');
-$routes->post('/insert_concurso', 'Admin::insert_concurso');
-$routes->get('/new_concurso', 'Admin::new_concurso');
-$routes->get('/admin', 'Admin::index');
-$routes->get('/clubes', 'Admin::clubes');
-$routes->get('/clube', 'Clube::index');
-$routes->get('/edita_clube/(:any)', 'Admin::edita_clube/$1');
+$routes->group('', ['filter' => 'auth:admin.dashboard'], static function ($routes) {
+    $routes->get('/admin', 'Admin::index');
+});
+
+$routes->group('certificado', ['filter' => 'auth:certificado.manage'], static function ($routes) {
+    $routes->get('', 'Certificado::index');
+    $routes->get('create', 'Certificado::create');
+    $routes->post('store', 'Certificado::store');
+    $routes->get('edit/(:num)', 'Certificado::edit/$1');
+    $routes->post('delete/(:num)', 'Certificado::delete/$1');
+    $routes->post('available/(:num)', 'Certificado::markAvailable/$1');
+    $routes->get('import', 'Certificado::import');
+    $routes->post('import', 'Certificado::import');
+});
+
+$routes->group('', ['filter' => 'auth:certconfig.manage'], static function ($routes) {
+    $routes->get('/certconfig', 'CertConfig::index');
+    $routes->get('/certconfig/create', 'CertConfig::create');
+    $routes->post('/certconfig/store', 'CertConfig::store');
+    $routes->get('/certconfig/edit/(:num)', 'CertConfig::edit/$1');
+    $routes->get('/certconfig/copy/(:num)', 'CertConfig::copy/$1');
+    $routes->post('/certconfig/delete/(:num)', 'CertConfig::delete/$1');
+    $routes->post('/certconfig/preview', 'CertConfig::preview');
+    $routes->post('/certconfig/upload-image', 'CertConfig::uploadImage');
+
+    $routes->get('/lista_concursos', 'CertConfig::index');
+    $routes->get('/edita_concurso/(:num)', 'CertConfig::edit/$1');
+    $routes->post('/update_concurso', 'CertConfig::storeLegacy');
+    $routes->post('/insert_concurso', 'CertConfig::storeLegacy');
+    $routes->get('/new_concurso', 'CertConfig::create');
+});
+
+$routes->group('', ['filter' => 'auth:clube.manage'], static function ($routes) {
+    $routes->get('/clubes', 'Clube::index');
+    $routes->get('/clube', 'Clube::index');
+    $routes->get('/clube/create', 'Clube::create');
+    $routes->post('/clube/store', 'Clube::store');
+    $routes->get('/clube/edit/(:num)', 'Clube::edit/$1');
+    $routes->post('/clube/delete/(:num)', 'Clube::delete/$1');
+    $routes->get('/edita_clube/(:num)', 'Clube::edit/$1');
+});
 //$routes->get('/store/(:any)', )
 
 

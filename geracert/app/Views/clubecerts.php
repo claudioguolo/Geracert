@@ -7,13 +7,13 @@
   <!-- <caption>Certificados Disponíveis</caption> -->
 
   <thead>
-    <th style="width: 10%"><b>CÓDIGO</b></th>
-    <th style="width: 10%"><b>CLUBE</b></th>
-    <th style="width: 10%"><b>CONCURSO</b></th>
-    <th style="width: 10%" style="width: 5%"><b>ANO</b></th>
-    <th style="width: 10%"><b>SCORE</b></th>
-    <th style="width: 10%"><b>TIPO</b></th>
-    <th style="width: 5%"><b>CERT</b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicCode')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicClub')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicContest')) ?></b></th>
+    <th style="width: 10%" style="width: 5%"><b><?= esc(lang('UI.publicYear')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicScore')) ?></b></th>
+    <th style="width: 10%"><b><?= esc(lang('UI.publicType')) ?></b></th>
+    <th style="width: 5%"><b><?= esc(lang('UI.publicCertificate')) ?></b></th>
   </thead>
 
   <tbody class=".table-hover">
@@ -24,16 +24,16 @@
 
     <?php foreach($consulta as $certificado): ?>
 
-    <?= '<tr>' ?>
-    <?= '<td><b>'.$certificado->id.'</b></td>'; ?>
-    <?= '<td><b>'.$certificado->clube.'</b></td>'; ?>
-    <?= '<td>'.$certificado->concurso.'</td>'; ?>
-    <?= '<td>'.$certificado->ano.'</td>'; ?>
-    <?= '<td>'.$certificado->pontuacao.'</td>'; ?>
-    <?= '<td>'.strtoupper($certificado->tipo_evento).'</td>'; ?>
+    <tr>
+    <td><b><?= esc($certificado->id) ?></b></td>
+    <td><b><?= esc($certificado->clube) ?></b></td>
+    <td><?= esc($certificado->concurso) ?></td>
+    <td><?= esc($certificado->ano) ?></td>
+    <td><?= esc($certificado->pontuacao) ?></td>
+    <td><?= esc(strtoupper((string) $certificado->tipo_evento)) ?></td>
     <?= helper("App_helper"); ?>
     <?= findIco($certificado->status, $certificado->serial, $certificado->identificador,"func=clube"); ?>
-    <?= '</tr>' ?>
+    </tr>
 
     <?php endforeach; ?>
 

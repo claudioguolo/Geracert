@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Config\App;
+use Config\Services;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -48,5 +50,15 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+        $appConfig = config(App::class);
+        $supportedLocales = $appConfig->supportedLocales;
+        $sessionLocale = session()->get('locale');
+        $locale = in_array($sessionLocale, $supportedLocales, true) ? $sessionLocale : $appConfig->defaultLocale;
+
+        Services::language()->setLocale($locale);
+
+        if (method_exists($this->request, 'setLocale')) {
+            $this->request->setLocale($locale);
+        }
     }
 }

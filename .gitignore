@@ -5,9 +5,15 @@
 
 geracert/vendor/
 geracert/writable/
-py9mt/images/
+geracert/build/
+geracert/.phpunit.result.cache
+py9mt/images/*
+!py9mt/images/contest/
+py9mt/images/contest/*
+!py9mt/images/contest/.gitkeep
 Old.zip
 
 geracert.zip
+geracert_dev,database
 
 *.log
