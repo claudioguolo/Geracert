@@ -204,7 +204,7 @@ GERACERT generates certificates by combining:
 
 If you want to create a new contest certificate layout, read:
 
-- [Certificate Template Guide](docs/CERTIFICATE_TEMPLATES.md)
+- [Documentation Index](docs/README.md)
 
 That guide explains:
 
